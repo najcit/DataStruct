@@ -105,7 +105,7 @@ int stack_length(Stack * stack)
     return stack->stack_length;
 }
 
-// 栈定元素
+// 栈顶元素
 Status stack_top(Stack * stack, Element * element)
 {
     if (!stack) { return WRONG_INPUT; }
@@ -113,6 +113,20 @@ Status stack_top(Stack * stack, Element * element)
     if (!element) { return WRONG_INPUT; }
     *element = stack->top->element;
     return OK;
+}
+
+// 栈查找元素
+bool stack_find(Stack * stack, Element element)
+{
+    if (!stack) { return false; }
+    if (stack_empty(stack)) { return false; }
+    Node * node = stack->base->next;
+    while (node)
+    {
+        if (element.data == node->element.data) { return true; }
+        node = node->next;
+    }
+    return false;
 }
 
 // 栈插入元素
