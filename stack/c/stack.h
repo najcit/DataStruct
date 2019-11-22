@@ -28,7 +28,7 @@ int stack_length(Stack * stack);
 int stack_top(Stack * stack, Element * element);
 
 // 栈插入元素
-int stack_push(Stack * stack, Element e);
+int stack_push(Stack * stack, Element element);
 
 // 栈移除元素
 int stack_pop(Stack * stack, Element * element);

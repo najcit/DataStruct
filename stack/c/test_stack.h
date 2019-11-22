@@ -61,7 +61,6 @@ CTEST(stack, call_test) {
     ASSERT_EQUAL(ILLEGAL_OPT, stack_top(&s, &e));
 }
 
-
 CTEST(stack, data_test) {
     Stack s;
     Element e = {1};
@@ -91,7 +90,6 @@ CTEST(stack, data_test) {
     ASSERT_EQUAL(0, stack_length(&s));
     ASSERT_EQUAL(OK, destroy_stack(&s));
 }
-
 
 int main(int argc, char const *argv[])
 {

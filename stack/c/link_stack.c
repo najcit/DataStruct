@@ -179,5 +179,5 @@ Status stack_traverse(Stack * stack, Visit visit)
 // 注释 #define TEST_STACK 则不包含测试用例
 #define TEST_STACK
 #ifdef TEST_STACK
-#include "test_case.h"
+#include "test_stack.h"
 #endif
