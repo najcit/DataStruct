@@ -7,23 +7,40 @@
 typedef struct Queue Queue;
 typedef struct Element Element;
 
-int init_queue(Queue * q);
+// 函数返回值
+typedef enum Status
+{
+    OK,
+    UNKNOWN_ERR,
+    WRONG_INPUT,
+    ILLEGAL_OPT,
+    OVER_FLOW,
+} Status;
 
-int destroy_queue(Queue * q);
+// bool 类型
+typedef enum bool
+{
+    false,
+    true,
+} bool;
 
-int clear_queue(Queue * q);
+Status init_queue(Queue * q);
 
-int queue_empty(Queue * q);
+Status destroy_queue(Queue * q);
+
+Status clear_queue(Queue * q);
+
+bool queue_empty(Queue * q);
 
 int queue_length(Queue * q);
 
-int queue_head(Queue * q);
+Status queue_head(Queue * q, Element * e);
 
-int queue_end(Queue * q);
+Status queue_end(Queue * q, Element * e);
 
-int enqueue(Queue * q, Element e);
+Status enqueue(Queue * q, Element e);
 
-int dequeue(Queue * q, Element &e);
+Status dequeue(Queue * q, Element * e);
 
-typedef int (*Visit)(Element &e);
-int queue_travese(Queue * q, Visit visit);
+typedef int (*Visit)(Element * e);
+Status queue_traverse(Queue * q, Visit v);
