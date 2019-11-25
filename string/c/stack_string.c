@@ -28,12 +28,13 @@ typedef enum bool
 } bool;
 
 // 构造一个字符串
-Status string_assign(String * s, const char * s1)
+Status string_assign(String * s, const char * cs)
 {
     if (!s) { return WRONG_INPUT; }
-    if (!s1) { return WRONG_INPUT; }
-    if (strlen(s1) > STRING_MAX_SIZE) { return ILLEGAL_OPT; }
-    memcpy(*s, s1, strlen(s1));
+    if (!cs) { return WRONG_INPUT; }
+    if (strlen(cs) > STRING_MAX_SIZE) { return ILLEGAL_OPT; }
+    memset(*s, 0, STRING_MAX_SIZE);
+    memcpy(*s, cs, strlen(cs));
     return OK;
 }
 
@@ -43,7 +44,8 @@ Status string_copy(String * s, String * s1)
     if (!s) { return WRONG_INPUT; }
     if (!s1) { return WRONG_INPUT; }
     if (strlen(*s1) > STRING_MAX_SIZE) { return ILLEGAL_OPT; }
-    memcpy(*s, *s1, strlen(*s1));
+    memset(*s1, 0, STRING_MAX_SIZE);
+    memcpy(*s1, *s, strlen(*s));
     return OK;
 }
 
@@ -63,7 +65,7 @@ bool string_compare(String * s, String * s1)
 {
     if (!s) { return false; }
     if (!s1) { return false; }
-    if ((strlen(*s) == strlen(*s1)) && (0 != strncmp(*s, *s1, strlen(*s))))
+    if ((strlen(*s) == strlen(*s1)) && (0 == strncmp(*s, *s1, strlen(*s))))
     {
         return true;
     }
@@ -206,18 +208,5 @@ Status string_destroy(String * s)
     return OK;
 }
 
-int main(int argc, char const *argv[])
-{
-    String s = "123452356";
-    String ss = "345";
-    String t = "23";
-    String v = "ab";
-    int pos = 0;
-    string_index(&s, &ss, &pos);
-    printf("pos:%d\n", pos);
-    string_replace(&s, &t,&v);
-    printf("s:%s\n", s);
-    printf("string:%s len:%ld size:%ld\n", s, strlen(s), sizeof(s));
-    
-    return 0;
-}
+#define TEST_STRING
+#include "test_string.h"

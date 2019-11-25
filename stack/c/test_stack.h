@@ -11,7 +11,7 @@ int show(Element * e)
 }
 
 
-CTEST(stack, call_test) {
+CTEST(stack, stack_test) {
     Stack s;
     Element e = {1};
 

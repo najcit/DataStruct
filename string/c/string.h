@@ -23,7 +23,7 @@ typedef enum bool
 } bool;
 
 // 构造一个字符串
-Status string_assign(String * s, const char * chars);
+Status string_assign(String * s, const char * cs);
 
 // 复制字符串
 Status string_copy(String * s, String * s1);
@@ -47,7 +47,7 @@ Status string_concat(String * s, String * s1);
 Status substring(String * s, int pos, Status len, String * ss);
 
 // 获取子串的开始位置
-Status string_index(String * s, int pos, String * ss);
+Status string_index(String * s, String * ss, int * pos);
 
 // 字符串替换
 Status string_replace(String * s, String * t, String * v);
